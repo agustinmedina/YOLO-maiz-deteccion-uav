@@ -18,9 +18,20 @@ El objetivo es permitir la estimación precisa de la **densidad de población de
 
 ---
 
-## 2. Dataset y Metodología de Partición
+## 2. Dataset, Fuentes y Metodología de Partición
 
-El benchmark original proviene del estudio de *David et al. (2021)* y está compuesto por 189 capturas aéreas en formato Supervisely con más de 16.000 anotaciones rectangulares y metadatos de vuelo (sitio, fecha, cultivo, altitud, espaciamiento entre hileras).
+### Fuente de los Datos y Atribución
+Las imágenes aéreas y anotaciones utilizadas en este proyecto provienen de un benchmark científico público internacional:
+
+- **Plataforma Dataset Ninja:** [Plant Detection and Counting](https://datasetninja.com/plant-detection-and-counting)
+- **Repositorio Oficial Zenodo:** [Zenodo Record 4890370](https://zenodo.org/records/4890370) (DOI: [10.5281/zenodo.4890370](https://doi.org/10.5281/zenodo.4890370))
+- **Instituciones responsables:** 
+  - **INRAE** (*Institut National de Recherche pour l'Agriculture, l'Alimentation et l'Environnement*, Francia)
+  - **Arvalis** (*Institut du végétal*)
+  - **ITB** (*Institut Technique de la Betterave*)
+  - **Hiphen**
+- **Licencia:** Creative Commons Attribution 4.0 International ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
+- **Composición:** 189 imágenes aéreas RGB en ultra alta resolución ($6000 \times 4000$ px), adquiridas con drones (Sony ILCE-α6000) a 30-50 m de altura, con 16.122+ etiquetas rectangulares en formato Supervisely y metadatos por vuelo (sitio, año, id de vuelo, fecha de siembra, distancia entre hileras).
 
 ### Pipeline de Conversión y Tiling (`supervisely_to_yolo.py`)
 Dado que las redes neuronales estándar reescalan imágenes grandes perdiendo el detalle de plántulas de pocos píxeles, se desarrolló un conversor a medida que realiza:
@@ -169,3 +180,28 @@ metrics = model.val(data="/content/plantas_yolo/data.yaml", split="test")
    - Probar arquitecturas con mayor resolución espacial o capacidad (`YOLO11s` o `YOLO11m`).
    - Implementar inferencia segmentada con **SAHI** (*Slicing Aided Hyper Inference*) en etapas de post-procesamiento.
    - Aplicar aumentaciones de imagen dirigidas al contraste de verdes (*Color Jitter / CLAHE*).
+
+---
+
+## 9. Referencias y Citación
+
+Si utilizas este proyecto o el dataset, por favor cita el trabajo original de los autores:
+
+> **DAVID, Etienne; DAUBIGE, Gaëtan; et al. (2021).**  
+> *Plant detection and counting from high-resolution RGB images acquired from UAVs: comparison between deep-learning and handcrafted methods with application to maize, sugar beet, and sunflower crops.*  
+> **Zenodo.** DOI: [10.5281/zenodo.4890370](https://doi.org/10.5281/zenodo.4890370)
+
+Formato BibTeX:
+```bibtex
+@dataset{david_etienne_2021_4890370,
+  author       = {David, Etienne and Daubige, Gaëtan and Arvalis and ITB and Hiphen and INRAE},
+  title        = {{Dataset for the paper: Plant detection and counting from high-resolution 
+                   RGB images acquired from UAVs: comparison between deep-learning and 
+                   handcrafted methods with application to maize, sugar beet, and sunflower crops}},
+  month        = jun,
+  year         = 2021,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.4890370},
+  url          = {https://doi.org/10.5281/zenodo.4890370}
+}
+```
