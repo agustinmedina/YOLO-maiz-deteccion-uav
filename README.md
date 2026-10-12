@@ -74,14 +74,14 @@ Evaluación final sobre los 81 tiles de vuelos completamente ciegos para el mode
 > **Hallazgo Sobresaliente en Test:** El modelo generalizó de forma excepcional en maíz sobre vuelos no vistos, alcanzando un **$mAP_{50}$ del 86.1%** y un **Recall del 89.7%** (detectó prácticamente 9 de cada 10 plantas de maíz), demostrando que la caída en validación se debió a particularidades de un único vuelo y no a una incapacidad del modelo para aprender la especie.
 
 ### Curvas de Aprendizaje a lo largo de las 100 Épocas
-![Curvas de Entrenamiento](assets/results.png)
+![Curvas de Entrenamiento](assets/results.jpg)
 
 ---
 
 ## 5. Análisis de Errores y Diagnóstico Agronómico (Semana 3)
 
 ### Matriz de Confusión y Visualización de Predicciones
-![Matriz de Confusión Normalizada](assets/confusion_matrix_normalized.png)
+![Matriz de Confusión Normalizada](assets/confusion_matrix_normalized.jpg)
 
 *Detecciones sobre ortofotos aéreas en el conjunto de validación:*
 ![Detecciones Cualitativas en Validación](assets/val_batch0_pred.jpg)
@@ -110,8 +110,8 @@ YOLO-maiz-111026/
 ├── dataset_supervisely/                # Dataset original descomprimido (meta.json, ds0/img, ds0/ann)
 │
 ├── assets/                             # Gráficos y visualizaciones para el informe
-│   ├── results.png                     # Curvas de pérdida y mAP (100 épocas)
-│   ├── confusion_matrix_normalized.png # Matriz de confusión normalizada
+│   ├── results.jpg                     # Curvas de pérdida y mAP (100 épocas)
+│   ├── confusion_matrix_normalized.jpg # Matriz de confusión normalizada
 │   └── val_batch0_pred.jpg             # Detecciones visuales con cajas delimitadoras
 │
 ├── plantas_yolo/                       # Dataset procesado en formato Ultralytics
